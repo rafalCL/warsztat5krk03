@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.warsztat5krk03.model.Book;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -23,4 +24,15 @@ public class MemoryBookService {
 
     public List<Book> getList() {return list;}
     public void setList(List<Book> list) {this.list = list;}
+
+    public void deleteBook(long id) {
+        Iterator<Book> itBook = this.list.iterator();
+        while (itBook.hasNext()){
+            Book b = itBook.next();
+            if(b.getId() == id){
+                itBook.remove();
+                break;
+            }
+        }
+    }
 }
